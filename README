@@ -1,0 +1,22 @@
+Simultaneous Localization and Mapping of robot
+
+This program stimulates an enviorment in which a robot does not know its true posistion and must
+rely on sensor values to locate itself and objects in its path. The program runs the fastSlam 
+algorithm which works as follows:
+
+1. Initializes "particles". Particles are guesses for where the robot is and what the world surrounding
+it is like. A particle contains the posistion of the robot in terms of the robot's x coordinate, y coordinate, and bearing, phi. It also contains a list of "landmarks". A landmark is an object observed in the robot's world.
+A landmark contains it's mean posistion in terms of it's x coordinate and y coordinate and a covaraince matrix.
+Lastly, the particle contains a "weight" which is the likelihood that this particle is correct.
+
+
+2. Move the robot to produce new measuremnts. Change the list of landmarks as the robot gets new sensor readings.
+
+3. Account for the new measurements and noise that each particle adds to the robots measurments. Use Extended 
+Kalman fiters to estimate the posistion of landmarks in this noisy world. 
+
+4. Update all the existing landmarks accordingly and potentially add a new landmark if one is observed.
+
+5. Resample the particles with particle filtering algorithm.
+
+6. Repeat the process. 
